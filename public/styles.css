@@ -77,8 +77,11 @@ button:hover {
   transform: rotateY(180deg); /* Flip the grid item */
 }
 
+.grid-item.flipped .front {
+  z-index: 0;
+}
 .grid-item.flipped .back {
-  z-index: 1;
+  z-index: 10;
 }
 
 .front img, .back {
