@@ -61,8 +61,9 @@ function getRandomImages(seed) {
     const selectedNames = shuffledNames.slice(0, 24);
 
     // Pair each image with a name
-    const imageWithName = selectedImages.map((imageUrl, index) => {
-        return [imageUrl, selectedNames[index]];
+    const imageWithName = selectedImages.map((imageUrl) => {
+        const name = path.basename(imageUrl).replace(/\.\w+/, '')
+        return [imageUrl, name];
     });
 
     return imageWithName;
@@ -105,7 +106,7 @@ app.listen(port, () => {
 function createImageURLs(directory) {
     try {
         // Read all file names in the directory
-        const files = fs.readdirSync(directory);
+        const files = fs.readdirSync(directory).filter(file => file !== '.DS_Store');
 
         // Map each file name to a URL
         const urls = files.map(file => `/faces/${file}`);
