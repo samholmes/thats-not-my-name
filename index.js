@@ -25,40 +25,12 @@ app.use(express.static('public'));
 // });
 
 
-const names = ["Alex"
-,"Jordan"
-,"Taylor"
-,"Casey"
-,"Riley"
-,"Jamie"
-,"Morgan"
-,"Cameron"
-,"Avery"
-,"Skyler"
-,"Quinn"
-,"Kendall"
-,"Rowan"
-,"Frankie"
-,"Peyton"
-,"Dakota"
-,"Phoenix"
-,"Robin"
-,"Emerson"
-,"Blake"
-,"Spencer"
-,"Sydney"
-,"Charlie"
-,"Bailey"]
-
 function getRandomImages(seed) {
     const rng = seededRandomGenerator(seed);
 
     // Custom sort function using the seeded random generator
     let shuffledImages = [...imageUrls].sort(() => 0.5 - rng());
-    let shuffledNames = [...names].sort(() => 0.5 - rng());
-
     const selectedImages = shuffledImages.slice(0, 24);
-    const selectedNames = shuffledNames.slice(0, 24);
 
     // Pair each image with a name
     const imageWithName = selectedImages.map((imageUrl) => {
