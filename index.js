@@ -4,6 +4,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const port = 3000;
+const compression = require('compression')
+
 
 // Array of image URLs
 
@@ -17,6 +19,7 @@ const imageUrls = createImageURLs(imageDirectory);
 // }
 
 // Serve static files from 'public' directory
+app.use(compression())
 app.use(express.static('public'));
 
 // // Route to get random images
@@ -46,7 +49,6 @@ function getRandomImages(seed) {
 app.get('/images', (req, res) => {
   const seed = req.query.seed || 'defaultSeed'; // Use a default seed if none is provided
   const images = getRandomImages(seed)
-  console.log(images)
   res.json(images);
 });
 
