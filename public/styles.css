@@ -77,8 +77,13 @@ button:hover {
   transform: rotateY(180deg); /* Flip the grid item */
 }
 
+.grid-item .front {
+  transition: opacity 300ms;
+}
+
 .grid-item.flipped .front {
   z-index: 0;
+  opacity: 0;
 }
 .grid-item.flipped .back {
   z-index: 10;
