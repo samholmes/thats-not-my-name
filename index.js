@@ -25,21 +25,53 @@ app.use(express.static('public'));
 // });
 
 
-// Function to get 24 random images using a seed
+const names = ["Alex"
+,"Jordan"
+,"Taylor"
+,"Casey"
+,"Riley"
+,"Jamie"
+,"Morgan"
+,"Cameron"
+,"Avery"
+,"Skyler"
+,"Quinn"
+,"Kendall"
+,"Rowan"
+,"Frankie"
+,"Peyton"
+,"Dakota"
+,"Phoenix"
+,"Robin"
+,"Emerson"
+,"Blake"
+,"Spencer"
+,"Sydney"
+,"Charlie"
+,"Bailey"]
+
 function getRandomImages(seed) {
-  // Create a seeded random generator
-  const rng = seededRandomGenerator(seed);
+    const rng = seededRandomGenerator(seed);
 
-  // Custom sort function using the seeded random generator
-  let shuffled = [...imageUrls].sort(() => 0.5 - rng());
+    // Custom sort function using the seeded random generator
+    let shuffledImages = [...imageUrls].sort(() => 0.5 - rng());
+    let shuffledNames = [...names].sort(() => 0.5 - rng());
 
-  return shuffled.slice(0, 24);
+    const selectedImages = shuffledImages.slice(0, 24);
+    const selectedNames = shuffledNames.slice(0, 24);
+
+    // Pair each image with a name
+    const imageWithName = selectedImages.map((imageUrl, index) => {
+        return [imageUrl, selectedNames[index]];
+    });
+
+    return imageWithName;
 }
+
 
 // Route to get random images with a seed parameter
 app.get('/images', (req, res) => {
   const seed = req.query.seed || 'defaultSeed'; // Use a default seed if none is provided
-  console.log(seed)
   const images = getRandomImages(seed)
   console.log(images)
   res.json(images);
@@ -68,7 +100,7 @@ function createImageURLs(directory) {
         const files = fs.readdirSync(directory);
 
         // Map each file name to a URL
-        const urls = files.map(file => `http://localhost:${port}/faces/${file}`);
+        const urls = files.map(file => `/faces/${file}`);
         return urls;
     } catch (error) {
         console.error('Error reading directory:', error);

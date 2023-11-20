@@ -15,6 +15,10 @@
     height: auto;
     /* Optional: Add styles for images here */
 }
+.grid-item span {
+  text-align: center;
+  display: block;
+}
 
 .grid-container {
   perspective: 1000px; /* Depth of the 3D space */
@@ -33,7 +37,7 @@
   transform: rotateY(180deg); /* Flip the grid item */
 }
 
-.front, .back {
+.front img, .back {
   backface-visibility: hidden;
   /* position: absolute; */
   top: 0;
@@ -52,4 +56,20 @@
 .front img {
   width: 100%;
   height: auto;
+}
+
+.selected-image {
+  display: block; /* Makes the image a block-level element */
+  margin: 20px auto; /* Centers the image horizontally and adds some margin for spacing */
+  max-width: 30%; /* Ensures the image does not exceed the width of its container */
+  height: auto; /* Maintains the aspect ratio of the image */
+
+}
+
+.selected-image img {
+  width: 100%;
+}
+.selected-image span {
+  text-align: center;
+  display: block;
 }
