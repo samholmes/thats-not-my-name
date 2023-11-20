@@ -4,6 +4,10 @@ body {
   text-align: center;
 }
 
+body {
+  touch-action: manipulation
+}
+
 button {
   color: white;
   background-color: lightcoral;
@@ -41,7 +45,7 @@ button:hover {
 }
 
 .grid-container {
-  perspective: 1000px; /* Depth of the 3D space */
+  perspective: 12000px; /* Depth of the 3D space */
 }
 
 .grid-item {
@@ -49,7 +53,7 @@ button:hover {
   /* width: calc(100% / 12); */
   cursor: pointer;
   position: relative;
-  transition: transform 0.6s;
+  transition: transform 300ms;
   transform-style: preserve-3d;
 }
 
