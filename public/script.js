@@ -1,3 +1,8 @@
+const newSeedBtn = document.getElementById('newseedbtn')
+newSeedBtn.onclick = () => {
+  location.href = location.pathname
+}
+
 function fetchImagesOrRedirectForSeed() {
     // Function to parse the seed from the URL
     function getSeedFromURL() {
@@ -67,6 +72,7 @@ function fetchImagesOrRedirectForSeed() {
 
             // Call the function to select and display a random image
             selectRandomImage();
+
 
           })
           .catch(error => console.error('Error fetching images:', error));

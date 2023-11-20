@@ -77,8 +77,16 @@ app.get('/images', (req, res) => {
   res.json(images);
 });
 
+let lastSeed
+
 app.get('/generate-seed', (req, res) => {
-    const seed = generateSecureRandomSeed();
+
+    const seed = lastSeed ?? generateSecureRandomSeed();
+
+    lastSeed = seed
+    setTimeout(() => {
+        lastSeed = undefined
+    }, 5000)
 
     res.send(seed)
 });
