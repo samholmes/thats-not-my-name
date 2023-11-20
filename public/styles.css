@@ -8,6 +8,13 @@ body {
   touch-action: manipulation
 }
 
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #b00b13;
+  text-shadow: .1em .1em 0em lightcoral;
+}
+
 button {
   color: white;
   background-color: lightcoral;

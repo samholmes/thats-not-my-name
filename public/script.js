@@ -75,7 +75,7 @@ function fetchImagesOrRedirectForSeed() {
                 container.appendChild(nameLabel)
 
                 // Append the new image element after the grid
-                grid.parentNode.insertBefore(container, grid);
+                document.getElementById('who-am-i').appendChild(container, grid);
             }
 
 
