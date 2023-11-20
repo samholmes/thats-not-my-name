@@ -1,6 +1,11 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     width: 100%;
     max-width: 1200px;
@@ -34,6 +39,15 @@
   transform-style: preserve-3d;
 }
 
+.grid-item, .selected-image {
+  background-color: lightcoral;
+  color: white;
+  padding: .5rem;
+  border-radius: .5rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .grid-item.flipped {
   transform: rotateY(180deg); /* Flip the grid item */
 }
@@ -60,15 +74,17 @@
 }
 
 .selected-image {
-  display: block; /* Makes the image a block-level element */
+  background: #b00b13;
   margin: 20px auto; /* Centers the image horizontally and adds some margin for spacing */
   max-width: 30%; /* Ensures the image does not exceed the width of its container */
   height: auto; /* Maintains the aspect ratio of the image */
-
 }
-
+.selected-image .you-are {
+  font-weight: bold;
+}
 .selected-image img {
-  width: 100%;
+  display: block;
+  margin: .5rem;
 }
 .selected-image span {
   text-align: center;

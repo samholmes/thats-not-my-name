@@ -19,6 +19,9 @@ function fetchImagesOrRedirectForSeed() {
           .then(results => {
             const grid = document.getElementById('imageGrid');
 
+            // Call the function to select and display a random image
+            whoAreYou();
+
             results.forEach(([url, name]) => {
                 const gridItem = document.createElement('div');
                 gridItem.className = 'grid-item';
@@ -49,7 +52,7 @@ function fetchImagesOrRedirectForSeed() {
             });
 
             // Function to randomly select an image and append it after the grid
-            function selectRandomImage() {
+            function whoAreYou() {
                 const randomIndex = Math.floor(Math.random() * results.length);
                 const pick = results[randomIndex];
                 const selectedImageUrl = pick[0]
@@ -57,6 +60,11 @@ function fetchImagesOrRedirectForSeed() {
 
                 // Create a new image element for the selected image
                 const container = document.createElement('div');
+                const youAre = document.createElement('span')
+                youAre.className = 'you-are'
+                youAre.textContent = 'You Are'
+                container.appendChild(youAre)
+
                 container.className = 'selected-image'; // Add a class for styling
                 const selectedImageElement = document.createElement('img');
                 selectedImageElement.src = selectedImageUrl;
@@ -67,11 +75,9 @@ function fetchImagesOrRedirectForSeed() {
                 container.appendChild(nameLabel)
 
                 // Append the new image element after the grid
-                grid.parentNode.insertBefore(container, grid.nextSibling);
+                grid.parentNode.insertBefore(container, grid);
             }
 
-            // Call the function to select and display a random image
-            selectRandomImage();
 
 
           })
